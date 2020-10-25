@@ -34,6 +34,39 @@ abstract class Middleware
         return $this->next->handle($request);
     }
 
+
+
+    /**
+     * Chain all user defined middlewares using "Chain of responsibility pattern".
+     *
+     * On the end of chain set InvokeMethodMiddleware which will call method
+     * in controller.
+     *
+     * @return Middleware $this
+     * @throws \Exception
+     */
+    public function loadMiddleware()
+    {
+        try {
+
+            // User defined middleware
+            foreach (Core::$middleware as $middleware) {
+                $this->setNext(new $middleware());
+            }
+
+            // Core middleware
+            $this->setNext(new InvokeMethodMiddleware());
+
+
+            return $this;
+
+        } catch (\Exception $e) {
+
+            throw $e;
+        }
+
+    }
+
     /**
      * All middlewares must implement this method.
      *

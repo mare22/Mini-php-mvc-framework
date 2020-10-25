@@ -18,36 +18,4 @@ class StartMiddleware extends Middleware
     {
         return parent::next($request);
     }
-
-
-    /**
-     * Chain all user defined middlewares using "Chain of responsibility pattern".
-     *
-     * On the end of chain set InvokeMethodMiddleware which will call method
-     * in controller.
-     *
-     * @return StartMiddleware $this
-     * @throws \Exception
-     */
-    public function loadMiddleware()
-    {
-        try {
-
-            // User defined middleware
-            foreach (Core::$middleware as $middleware) {
-                $this->setNext(new $middleware());
-            }
-
-            // Core middleware
-            $this->setNext(new InvokeMethodMiddleware());
-
-
-            return $this;
-
-        } catch (\Exception $e) {
-
-            throw $e;
-        }
-
-    }
 }
