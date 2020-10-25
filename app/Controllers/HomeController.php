@@ -12,7 +12,7 @@ class HomeController extends Response
     {
         $data = [
             'users' => $user->get(),
-            'example' => $exampleService->exampleBusinessLogic()
+            'example' => $exampleService->helloWorld()
         ];
 
         $this->view('home', $data);

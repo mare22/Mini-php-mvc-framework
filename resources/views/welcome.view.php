@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4 text-center">Welcome to mini php mvc framework!</h1>
+            <h1 class="display-4 text-center"><?= $data['message'] ?></h1>
         </div>
     </div>
 </div>

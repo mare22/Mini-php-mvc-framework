@@ -15,8 +15,8 @@ class WelcomeController extends Response
         $this->exampleService = $exampleService;
     }
 
-    public function index()
+    public function index(ExampleServiceInterface $exampleService)
     {
-        return view('welcome');
+        return view('welcome', ['message' => $exampleService->getMessage()]);
     }
 }

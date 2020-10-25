@@ -62,12 +62,12 @@ class InvokeMethodMiddleware extends Middleware
 
             if(class_exists($typeProperty) || interface_exists($typeProperty)) {
 
-                if(get_parent_class($typeProperty) == 'Core\\QueryBuilder') {
-                    array_push($methodParams, new $typeProperty(app()->getSingleton('connection')));
+                if(get_parent_class($typeProperty) == 'Core\\Database\\Model') {
+                    array_push($methodParams, new $typeProperty());
                     continue;
                 }
 
-                $bindValue = app()->make((string)$param->getType());
+                $bindValue = app()->make($typeProperty);
 
                 if(isset($bindValue)) {
                     array_push($methodParams, $bindValue);

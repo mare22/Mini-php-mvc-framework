@@ -1,0 +1,8 @@
+.idea/
+/node_modules
+composer.lock
+composer-dev.lock
+composer-prod.lock
+.phpstorm.meta.php
+package-lock.json
+

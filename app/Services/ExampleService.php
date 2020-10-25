@@ -4,8 +4,8 @@ namespace App\Services;
 
 class ExampleService implements ExampleServiceInterface
 {
-    public function exampleBusinessLogic()
+    public function getMessage()
     {
-        return 'Hello World!';
+        return 'Welcome to mini php mvc framework!';
     }
 }

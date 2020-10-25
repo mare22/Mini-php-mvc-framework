@@ -4,5 +4,5 @@ namespace App\Services;
 
 interface ExampleServiceInterface
 {
-    public function exampleBusinessLogic();
+    public function getMessage();
 }

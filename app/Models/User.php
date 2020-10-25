@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Core\QueryBuilder;
+use Core\Database\Model;
 
-class User extends QueryBuilder
+class User extends Model
 {
     protected $table = 'users';
 }

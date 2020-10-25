@@ -3,7 +3,7 @@
 
 use App\DiContainer;
 use Core\App;
-use Core\Connection;
+use Core\Database\Connection;
 
 
 
