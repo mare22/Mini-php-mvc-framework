@@ -31,12 +31,10 @@ $app = require_once '../bootstrap.php';
  *
  * @return Closure function
  */
-//TODO This should return rendered html
 $response = $app->load()->handle();
-//TODO Make template engine
 
 
 /**
  * Function will send response
  */
-$response();
+//$response();

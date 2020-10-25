@@ -19,7 +19,7 @@ class Model
 
     public function __call($method, $arguments)
     {
-        return $this->query()->$method($arguments);
+        return $this->query()->$method(...$arguments);
     }
 
 

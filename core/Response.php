@@ -13,18 +13,17 @@ class Response
      */
     public function view($view, $data = [])
     {
-        return function() use ($view, $data) {
+        extract($data);
 
-            $view = str_replace('.', '/', $view);
+        $viewContent = (new ViewRender($view))->render();
 
-            $viewPath = root_path() . "/resources/views/$view.view.php";
+        //TODO we should cache rendered files
+        $cachedFilePath = root_path() . "/core/Cache/view/random.view.php";
+        $file = fopen($cachedFilePath, "w");
+        fwrite($file, $viewContent);
+        fclose($file);
 
-            if(!file_exists($viewPath)) {
-                throw new Exception("File {$view} does not exist");
-            }
-
-            require_once $viewPath;
-        };
+        require($cachedFilePath);
     }
 
     public function json($data)

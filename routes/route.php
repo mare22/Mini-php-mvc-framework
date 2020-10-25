@@ -22,3 +22,5 @@ $router->get('/user/{user}/product/{id}', 'WelcomeController@index');
 
 
 $router->get('/home', 'HomeController@index');
+
+$router->get('/example', 'HomeController@example');

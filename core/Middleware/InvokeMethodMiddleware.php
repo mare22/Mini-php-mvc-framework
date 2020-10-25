@@ -26,8 +26,10 @@ class InvokeMethodMiddleware extends Middleware
         $methodParams = $this->getMethodParams($method, $request);
 
         $constructor = $reflectionClass->getConstructor();
-        $constructorParams = $this->getMethodParams($constructor, $request);
-
+        $constructorParams = [];
+        if($constructor) {
+            $constructorParams = $this->getMethodParams($constructor, $request);
+        }
 
         return $method->invokeArgs(
             $reflectionClass->newInstanceArgs($constructorParams),

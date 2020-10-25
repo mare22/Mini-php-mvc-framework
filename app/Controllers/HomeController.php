@@ -10,11 +10,14 @@ class HomeController extends Response
 {
     public function index(User $user, ExampleServiceInterface $exampleService)
     {
-        $data = [
+        return view('home', [
             'users' => $user->get(),
-            'example' => $exampleService->helloWorld()
-        ];
+            'example' => $exampleService->getMessage()
+        ]);
+    }
 
-        $this->view('home', $data);
+    public function example()
+    {
+        return view('example');
     }
 }
